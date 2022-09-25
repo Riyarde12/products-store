@@ -1,4 +1,19 @@
-
 <template>
-	<h1 class="text-3xl font-bold underline">Hello world!</h1>
+	<section>
+		<products-search />
+	</section>
 </template>
+
+<script>
+	import productsSearch from "./pages/productsSearch.vue";
+	export default {
+		name: "App",
+		components: {
+			productsSearch,
+		},
+		created() {},
+		data() {
+			return {};
+		},
+	};
+</script>
