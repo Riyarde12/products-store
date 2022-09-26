@@ -1,5 +1,5 @@
 <template>
-	<section class="app-footer fixed">
+	<section class="app-footer">
 		<small> © 2022 Products Store - All Rights Reserved </small>
 	</section>
 </template>
@@ -18,8 +18,6 @@
     @apply flex;
     @apply justify-center;
     @apply items-center;
-	@apply bottom-0;
-	@apply w-full;
 	@apply justify-around;
 }
 

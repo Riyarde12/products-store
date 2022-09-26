@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="app">
 		<app-header />
 		<products-search />
 		<app-footer />
@@ -34,4 +34,12 @@ body{
 	@apply m-0;
 	@apply h-screen
 }
+
+.app{
+	@apply flex;
+	@apply flex-col;
+	@apply justify-between;
+    @apply min-h-screen;
+}
+
 </style>

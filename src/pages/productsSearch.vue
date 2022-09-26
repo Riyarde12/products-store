@@ -1,6 +1,10 @@
 <template>
 	<section class="products-search">
-		<products-list :products="products" @onSelectedDate="selectedDate" />
+		<products-list
+			:products="products"
+			:isLoading="isLoading"
+			@onSelectedDate="selectedDate"
+		/>
 	</section>
 </template>
 <script>
@@ -23,16 +27,20 @@
 			async getProducts() {
 				this.isLoading = true;
 				const res = await getProductData(this.userDateSelected);
-				if (res.type === "getProductsSuccessed") {
-					this.products = res.data;
-					console.log("res.data", res.data);
-					this.isLoading = false;
-				} else {
-					this.loading = false;
-					console.log(res.errs);
-				}
+				// just to fake REST requests like in a real application
+				setTimeout(() => {
+					if (res.type === "getProductsSuccessed") {
+						this.products = res.data;
+						console.log("res.data", res.data);
+						this.isLoading = false;
+					} else {
+						this.loading = false;
+						console.log(res.errs);
+					}
+				}, 3000);
 			},
 			selectedDate(date) {
+				this.products = [];
 				this.userDateSelected = date;
 				this.getProducts();
 			},
@@ -42,17 +50,14 @@
 
 <style>
 .products-search{
-	@apply h-main-screen-75;
-	@apply mt-8;
+	 @apply h-3/4; 
+	 @apply mt-8;
 	@apply mr-8;
 	@apply ml-24;
+	@apply mb-20;
+	@apply flex;
+	@apply flex-grow-2
 
 }
-/* height: 80vh;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* margin-top: 2rem;
-    margin-right: 2rem;
-    margin-left: 6rem; */ 
 
 </style>

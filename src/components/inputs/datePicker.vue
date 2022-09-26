@@ -1,17 +1,15 @@
 <template>
-	<section class="">
+	<section class="date-picker">
 		<form>
-			<div class="nativeDatePicker">
-				<label>Select..</label>
-				<input
-					type="date"
-					autofocus
-					:min="new Date().toISOString().split('T')[0]"
-					:max="getMaxDate"
-					@input="onSelected"
-					v-model="selected"
-				/>
-			</div>
+			<input
+				type="date"
+				class="form-input rounded"
+				autofocus
+				:min="new Date().toISOString().split('T')[0]"
+				:max="getMaxDate"
+				@input="onSelected"
+				v-model="selected"
+			/>
 		</form>
 	</section>
 </template>

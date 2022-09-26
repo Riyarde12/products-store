@@ -18,7 +18,7 @@
 @apply items-center;
 @apply shadow-b-s-helper;
 @apply pl-24;
-/* @apply px-padding-l-r-7.6; */
+
 }
 
 .app-header h1{

@@ -1,9 +1,16 @@
 <template>
 	<section class="product-list-item">
-		<h1>{{ product.name }}</h1>
-		<h3>{{ product.price }}</h3>
-		<h3>{{ product.times.makeDays }}</h3>
+		<div class="flex">
+			<span>Product </span>
+			<span>{{ product.name }} </span>
+		</div>
+		<div class="flex">
+			<span>Price </span>
+			<span>{{ product.price }}</span>
+		</div>
+		<span>Will take {{ product.times.makeDays }} days to make</span>
 		<ul>
+			<span>Available in days: </span>
 			<li v-for="(day, index) in getAvailableDaysOfWeek" :key="index">
 				{{ get(day) }}
 			</li>
@@ -32,8 +39,6 @@
 		},
 		computed: {
 			getAvailableDaysOfWeek() {
-				// console.log(day);
-
 				return this.product.times.availableDaysOfWeek;
 			},
 		},
@@ -41,18 +46,22 @@
 </script>
 
 <style>
+.product-list-item{
+	@apply flex;
+	@apply flex-col;
+	@apply gap-1;
+}
+
+.flex{
+	@apply justify-between
+}
+
 ul{
 	@apply text-sm;
 	@apply flex;
 	@apply flex-wrap;
 	@apply justify-between;
+	@apply flex-col;
+	@apply gap-1;
 }
 </style>
-
-
-//     font-size: 0.75rem;
-//     line-height: 1rem;
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: space-around;
-// 
