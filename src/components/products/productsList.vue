@@ -1,10 +1,11 @@
 <template>
 	<section class="products-list">
-		<div class="grid grid-cols-3 gap-4">
+		<div class="grid grid-flow-row auto-rows-max gap-x-6 gap-y-6">
 			<date-picker class="col-span-3" @onSelected="onSelectedDate" />
 			<div v-for="product in products" :key="product.id">
 				<products-list-item :product="product" />
 			</div>
+
 			<div>
 				<h1 v-if="!products">
 					Please select a date to display relevant products

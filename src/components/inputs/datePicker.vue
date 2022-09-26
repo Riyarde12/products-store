@@ -5,6 +5,7 @@
 				<label>Select..</label>
 				<input
 					type="date"
+					autofocus
 					:min="new Date().toISOString().split('T')[0]"
 					:max="getMaxDate"
 					@input="onSelected"
@@ -42,3 +43,9 @@
 		},
 	};
 </script>
+
+<style>
+ input{
+	@apply cursor-pointer;
+}
+</style>

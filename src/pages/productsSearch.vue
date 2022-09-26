@@ -24,8 +24,8 @@
 				this.isLoading = true;
 				const res = await getProductData(this.userDateSelected);
 				if (res.type === "getProductsSuccessed") {
-					console.log("res.data", res.data);
 					this.products = res.data;
+					console.log("res.data", res.data);
 					this.isLoading = false;
 				} else {
 					this.loading = false;
@@ -39,3 +39,20 @@
 		},
 	};
 </script>
+
+<style>
+.products-search{
+	@apply h-main-screen-75;
+	@apply mt-8;
+	@apply mr-8;
+	@apply ml-24;
+
+}
+/* height: 80vh;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* margin-top: 2rem;
+    margin-right: 2rem;
+    margin-left: 6rem; */ 
+
+</style>
