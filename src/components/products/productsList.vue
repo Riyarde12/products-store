@@ -1,29 +1,39 @@
 <template>
 	<section class="products-list">
-		<ul v-if="products">
-			<div class="grid grid-cols-4 gap-4">
-				<!--	TODO: DATE PICKER HERE -->
-				<li v-for="product in products" :key="product.id">
-					<products-list-item :product="product" />
-				</li>
+		<div class="grid grid-cols-3 gap-4">
+			<date-picker class="col-span-3" @onSelected="onSelectedDate" />
+			<div v-for="product in products" :key="product.id">
+				<products-list-item :product="product" />
 			</div>
-		</ul>
+			<div>
+				<h1 v-if="!products">
+					Please select a date to display relevant products
+				</h1>
+			</div>
+		</div>
 	</section>
 </template>
 
 <script>
 	import productsListItem from "./productsListItem.vue";
+	import datePicker from "../inputs/datePicker.vue";
 	export default {
 		name: "products-list",
 		props: {
-			products: { type: Array, required: true },
+			products: { type: Array },
 		},
 		components: {
 			productsListItem,
+			datePicker,
 		},
 		created() {},
 		data() {
 			return {};
+		},
+		methods: {
+			onSelectedDate(date) {
+				this.$emit("onSelectedDate", date);
+			},
 		},
 	};
 </script>

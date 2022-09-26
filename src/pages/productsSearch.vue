@@ -1,10 +1,6 @@
 <template>
 	<section class="products-search">
-		<products-list v-if="products" :products="products" />
-		<h1 v-else-if="!selectedDay && !products">
-			Please select a date to display relevant products
-		</h1>
-		<h1 v-else-if="isLoading">Loading products</h1>
+		<products-list :products="products" @onSelectedDate="selectedDate" />
 	</section>
 </template>
 <script>
@@ -15,28 +11,30 @@
 		components: {
 			productsList,
 		},
-		created() {
-			this.getProducts();
-		},
+		created() {},
 		data() {
 			return {
 				products: null,
-				selectedDay: null,
-				loading: false,
+				userDateSelected: null,
+				isLoading: false,
 			};
 		},
 		methods: {
 			async getProducts() {
-				this.loading = true;
-				const res = await getProductData(this.selectedDay);
-				this.loading = false;
-				if (res.data) {
-					console.log("data", res.data);
+				this.isLoading = true;
+				const res = await getProductData(this.userDateSelected);
+				if (res.type === "getProductsSuccessed") {
+					console.log("res.data", res.data);
 					this.products = res.data;
+					this.isLoading = false;
 				} else {
 					this.loading = false;
 					console.log(res.errs);
 				}
+			},
+			selectedDate(date) {
+				this.userDateSelected = date;
+				this.getProducts();
 			},
 		},
 	};
