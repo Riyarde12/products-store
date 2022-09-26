@@ -10,7 +10,6 @@ export function addDays(date, days) {
 
 // this function created if we want to make a diff format checking without break the code above
 export function isSameDate(date, currentDayForCheck) {
-    console.log('example', currentDayForCheck);
     return date === currentDayForCheck.split("T")[0];
 }
 

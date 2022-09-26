@@ -31,7 +31,7 @@
 				setTimeout(() => {
 					if (res.type === "getProductsSuccessed") {
 						this.products = res.data;
-						console.log("res.data", res.data);
+
 						this.isLoading = false;
 					} else {
 						this.loading = false;

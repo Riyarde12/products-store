@@ -1,6 +1,7 @@
 import axios from "axios";
 import { isSameDate } from "./utils/date";
 
+
 export async function getProductData(date) {
     try {
 
