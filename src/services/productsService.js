@@ -7,7 +7,7 @@ export async function getProductData(date) {
 
         const res = await axios.get("../../data/data.json");
 
-        const filteredData = getFilteredDate(date, res.data);
+        const filteredData = getFilteredData(date, res.data);
         return {
             type: 'getProductsSuccessed',
             data: filteredData
@@ -24,19 +24,18 @@ export async function getProductData(date) {
 
 }
 
-
-function getFilteredDate(date, { data }) {
+function getFilteredData(date, { data }) {
     const filteredProducts = [];
     data.forEach(product => {
         const { excludeDates } = product.times;
         const isExcludeDate = excludeDates.some(currDate => {
-            // return date === currDate.date.split("T")[0];
             return isSameDate(date, currDate.date);
 
         });
         if (!isExcludeDate) {
-            const isAvailableToSuppley = product.times.availableDaysOfWeek.some(day => {
-                return new Date(date).getDay() + product.times.makeDays === day;
+            const { times } = product;
+            const isAvailableToSuppley = times.availableDaysOfWeek.some(day => {
+                return new Date(date).getDay() + times.makeDays === day;
             });
             if (isAvailableToSuppley) filteredProducts.push(product);
         }

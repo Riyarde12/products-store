@@ -12,7 +12,7 @@
 		<ul>
 			<span>Available in days: </span>
 			<li v-for="(day, index) in getAvailableDaysOfWeek" :key="index">
-				{{ get(day) }}
+				{{ dayOfTheWeek(day) }}
 			</li>
 		</ul>
 	</section>
@@ -33,7 +33,7 @@
 			return {};
 		},
 		methods: {
-			get(day) {
+			dayOfTheWeek(day) {
 				return makeDaysOfWeek(day);
 			},
 		},

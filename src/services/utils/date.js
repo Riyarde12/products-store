@@ -17,8 +17,8 @@ export function makeDaysOfWeek(day) {
     let weekDays = [];
     weekDays[1] = "Sunday";
     weekDays[2] = "Monday";
-    weekDays[3] = "tuesday";
-    weekDays[4] = "wednesday";
+    weekDays[3] = "Tuesday";
+    weekDays[4] = "Wednesday";
     weekDays[5] = "Thursday";
     weekDays[6] = "Friday";
     weekDays[7] = "Saturday";
